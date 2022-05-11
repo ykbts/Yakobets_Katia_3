@@ -8,35 +8,41 @@ namespace laba3._2
 {
     class Taxopark
     {
-
-        public static long Sort(List<Car> Cars)
+        public string Name { get; set; }
+        public List<Car> ListCars { get; set; }
+        public Taxopark(string Name)
         {
-            Console.Write("Sorted cars: ");
-            Cars.Sort();
-            foreach (Car car in Cars)
-            {
-       
-              Console.WriteLine(car);
-
-            }
-          
-            return Cars.Count;
+            this.Name = Name;
+            ListCars = new List<Car>();
         }
-        public static long Price(List<Car> Cars)
+        public void AddCar(Car car)
+        {
+            ListCars.Add(car);
+        }
+        public void Write()
+        {
+           foreach(Car car in ListCars)
+            {
+                Console.WriteLine(car.ToString());
+            }
+        }
+      
+
+        public void Price()
         {
             int sum = 0;
-            foreach (Car car in Cars)
+            foreach (Car car in ListCars)
             {
                 sum = sum + car.Price;
             }
            
             Console.WriteLine("Price: " + sum);
-            return sum;
+           
         }
-        public static long Speed(List<Car> Cars,int min, int max)
+        public void Speed(int min, int max)
         {
             Console.Write("Cars with such speed: ");
-            foreach (Car car in Cars)
+            foreach (Car car in ListCars)
             {
                 if (min <= car.MaxSpeed && car.MaxSpeed >= max)
                 {
@@ -45,7 +51,7 @@ namespace laba3._2
                 }
                 
             }
-            return Cars.Count ;
+           
         }
     }
 }
